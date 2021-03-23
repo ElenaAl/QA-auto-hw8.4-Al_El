@@ -10,7 +10,6 @@ public class Apple extends Fruit {
 
     @Override
     public final String toString() {
-
         return name;
     }
 }

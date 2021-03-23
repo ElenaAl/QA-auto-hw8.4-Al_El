@@ -3,17 +3,30 @@ package tf.qa.automation;
 public class Main {
 
     public static void main(final String[] args) {
-
-
         //1.проверяем метод copyFromBoxToBox
+        method1Check1();
+
+        //2.проверяем метод copyFreshFruitFromBoxToBox
+        method2Check1();
+
+        //3.проверяем метод printElementFromTwoBoxes
+        method3Check1();
+        method3Check2();
+
+        //4.проверяем метод printElementFromBoxes
+        method4Check1();
+        method4Check2();
+
+    }
+    static void method1Check1() {
         Box<Integer> one = new Box<>();
         one.put(5);
         Box<Object> two = new Box<>();
         two.put(4);
 
         BoxUtil.copyFromBoxToBox(one, two);
-
-        //2.проверяем метод copyFreshFruitFromBoxToBox
+    }
+    static void method2Check1() {
         Box<Apple> boxWithApple = new Box<>();
         boxWithApple.put(new Apple("apple1", false));
 
@@ -21,37 +34,45 @@ public class Main {
         boxForFruits.put(new Fruit());
 
         BoxUtil.copyFreshFruitFromBoxToBox(boxWithApple, boxForFruits);
-
-        //3.проверяем метод printElementFromTwoBoxes
-        Box<Apple> boxWithApple6 = new Box<>();
-        boxWithApple6.put(new Apple("apple6", false));
-        Box<Apple> boxWithApple2 = new Box<>();
-        boxWithApple2.input(boxWithApple6);
-        BoxUtil.printElementFromTwoBoxes(boxWithApple2);
-
-
-        //4.проверяем метод printElementFromBoxes
-        // это попытка сделать матрешку =(
-
-        Box<Fruit> boxWithApple4 = new Box<>();
-        Box<Fruit> boxWithApple5 = new Box<>();
-        Box<Fruit> boxWithApple7 = new Box<>();
-        boxWithApple7.put(new Apple("apple7", false));
-        Box<Fruit> boxWithApple8 = new Box<>();
-        boxWithApple8.put(new Apple("apple8", false));
-        Box<Fruit> boxWithApple9 = new Box<>();
-        boxWithApple9.put(new Apple("apple9", false));
-
-
-
-        boxWithApple4.input(boxWithApple5);
-        boxWithApple5.input(boxWithApple7);
-        boxWithApple7.input(boxWithApple8);
-        boxWithApple8.input(boxWithApple9);
-
-        BoxUtil.printElementFromBoxes(boxWithApple4);
     }
 
+    static void method3Check1() {
+        Box<Apple> box2 = new Box<>();
+        box2.put(new Apple("apple2", false));
+        Box<Box<Apple>> box1 = new Box<>();
+        box1.put(box2);
+        BoxUtil.printElementFromTwoBoxes(box1);
+    }
+
+    static void method3Check2() {
+        Box<Apple> box3 = new Box<>();
+        box3.put(new Apple("apple3", false));
+        Box<Object> box2 = new Box<>();
+        box2.put(box3);
+        Box<Box<Object>> box1 = new Box<>();
+        box1.put(box2);
+        BoxUtil.printElementFromTwoBoxes(box1);
+    }
+
+    static void method4Check1() {
+        Box<Apple> box3 = new Box<>();
+        box3.put(new Apple("apple4", false));
+        Box<Object> box2 = new Box<>();
+        box2.put(box3);
+        Box<Box<Object>> box1 = new Box<>();
+        box1.put(box2);
+        BoxUtil.printElementFromBoxes(box1);
+    }
+
+    static void method4Check2() {
+        Box<Apple> box = new Box<>();
+        box.put(new Apple("apple5", false));
+        BoxUtil.printElementFromBoxes(box);
+    }
 
 }
+
+
+
+
 

@@ -4,7 +4,7 @@
 
 package tf.qa.automation;
 
-public class Box<T> extends BoxInput<T> {
+public class Box<T> {
     private T someFruit;
 
     public final T get() {
@@ -18,5 +18,8 @@ public class Box<T> extends BoxInput<T> {
         this.someFruit = fruit;
 
     }
-
+   /* @Override
+    public final String toString() {
+        return someFruit.toString();
+    }*/
 }
